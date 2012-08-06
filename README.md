@@ -1,4 +1,4 @@
 Student-Examples
 ================
 
-Examples by Students of OpenClass
+Examples by Students of OpenClass/skjApp.com or based on the initial code by Students of OpenClass/skjApp.com. These examples are being shared under 'Creative Commons Attribution-ShareAlike 3.0 Unported' (CC BY-SA 3.0) license. For more details on CC BY-SA 3.0 license visit - http://creativecommons.org/licenses/by-sa/3.0/ . If you want to use any of these examples in any online content (website, presentations or any other place) please link back to http://www.skjapp.com . If you want to use in offline scenarios please show the logo of skjApp.com as source of these examples within your content. Students submitting code to this repository are submitting this code for their own free branding through the efforts of skjApp.com and OpenClass.

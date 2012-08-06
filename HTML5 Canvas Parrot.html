@@ -1,0 +1,89 @@
+<!-- Based on code by students, Harsh and Anshul of Birla Institute of Technology, Noida -->
+<!-- Code has been modified and cleaned by skjApp.com after permission from the above 2 students -->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>HTML5 Canvas Example: Parrot and Pigeon</title>
+	</head>
+	<body>
+		<div id = 'div1' onmouseover='mousedown1()' style='border-style: solid'>
+			MOUSE EVENT
+		</div>
+		
+		<canvas id = 'canvas1' width = "800" height = "800">
+		</canvas>
+		
+		<script type = "text/javascript">
+			
+			var ctx = document.getElementById('canvas1').getContext('2d') ;
+			var counter = 0 ;
+			
+			window.onkeydown = keydown1 ;
+			
+			function mousedown1()
+			{
+				if(counter % 2 == 0)
+				{
+					drawParrot('#00ff00') ;
+				}
+				else
+				{
+					drawParrot('#a0a0a0') ;
+				}
+				
+				counter++ ;
+			}
+			
+			function keydown1()
+			{
+				if(counter % 2 == 0)
+				{
+					drawParrot('#ffff00') ;
+				}
+				else
+				{
+					drawParrot('#00ffff') ;
+				}
+				
+				counter++ ;
+			}
+		
+			function drawParrot(color)
+			{
+				for(var h=0 ; h < 200 ; h=h+5)	
+				{ 		
+					// Body
+					ctx.beginPath();
+					ctx.moveTo(550,450);
+					ctx.bezierCurveTo(650+h,500+h,700+h,200-h,350-h,700-h);
+					ctx.fill();
+					
+					// Eye
+					var startAngleinDegrees = 0 ;
+					var endAngleinDegrees	= 360 ;
+					
+					var startAngleinRadians = (Math.PI/180) * startAngleinDegrees ;
+					var endAngleinRadians	= (Math.PI/180) * endAngleinDegrees ;
+					
+					ctx.fillStyle= "red" ;
+					ctx.beginPath() ;
+					ctx.arc(700,420,10, startAngleinRadians, endAngleinRadians, false) ; 
+					ctx.fill() ;
+					
+					// Beak
+					ctx.fillStyle = color ;
+					ctx.beginPath() ;			
+					ctx.moveTo(700,500) ;		 
+					ctx.lineTo(750,550) ;
+					ctx.moveTo(740,468) ;		 
+					ctx.lineTo(750,550) ;		
+					ctx.closePath() ;
+					ctx.stroke() ;
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>
