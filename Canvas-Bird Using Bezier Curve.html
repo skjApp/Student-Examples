@@ -1,0 +1,47 @@
+<!-- Code by students, Harsh and Anshul of Birla Institute of Technology, Noida -->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>HTML5 Canvas Example: Bezier_Curve</title>
+	</head>
+	<body>
+		<canvas id = 'canvas1' width = "800" height = "800"></canvas>
+		
+		<script type = "text/javascript">
+			var ctx = document.getElementById('canvas1').getContext('2d') ;
+			
+			 for(var h=0 ; h<200 ; h=h+5)	
+			 { 		
+			// Bezier Curve
+			ctx.beginPath();
+			ctx.moveTo(550,450);
+			ctx.bezierCurveTo(650+h,500+h,700+h,200-h,350-h,700-h);
+			ctx.fill();
+			ctx.fillStyle= "red"
+			
+			// Circle
+			var startAngleinDegrees = 0 ;
+			var endAngleinDegrees	= 360 ;
+			
+			
+			var startAngleinRadians = (Math.PI/180) * startAngleinDegrees ;
+			var endAngleinRadians	= (Math.PI/180) * endAngleinDegrees ;
+			
+			ctx.beginPath() ;
+			ctx.arc(700,420,10, startAngleinRadians, endAngleinRadians, false) ; 
+			ctx.fill() ;
+			ctx.fillStyle = "#00ff00"
+			
+			// Drawing a simple line
+			ctx.beginPath() ;			
+			ctx.moveTo(700,500) ;		// Starting point of line 
+			ctx.lineTo(750,550) ;
+			ctx.moveTo(740,468) ;		 
+			ctx.lineTo(750,550) ;		
+			ctx.closePath() ;
+			ctx.stroke() ;				// Drawing the above coded path
+			}
+		</script>
+	</body>
+</html>

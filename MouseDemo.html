@@ -1,0 +1,104 @@
+<!--Mouse Event Demo by student Nikhil Ranjan of USIT, IP University, Delhi -->
+
+<!--Welcome To Mouse Event Demo-->
+<!--Mouse has three basic events like mousemove, mouseup, mousedown and there are
+more but we will talk about these three only.
+To capture mouse event U have to set up a EventHandler.
+EventHandler is a function which get called each time an event get fired(event occured).
+Events can be associated with any HTML element.
+In our demo we associate events or in other words listen to the events from a particular
+div element with id : demo. The code is explained in script section  -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mouse Event Demo</title>
+<style>
+/* we have to write some style to size the divs and place the divs at correct position */
+#demo{
+ width: 250px;
+ height: 250px;
+ margin: 5% auto;
+ background-color: pink;
+}
+#pos{
+font-family:Arial,sans-serif;
+width:220px;
+background-color:pink;
+margin: 0 auto;
+}
+#click{
+width:5px;
+height:5px;
+background-color:black;
+display:none;
+position:relative;
+}
+</style>
+</head>
+
+<body>
+<div id="demo"></div>
+<div id="pos"></div>
+<div id="click"></div>
+<script type="text/javascript">
+	//To listen to mouse events for a div first we have to get its refrence
+	//that is done by getElementByID
+	var demoDiv = document.getElementById('demo');
+	var posDiv = document.getElementById('pos');
+	var clickDiv = document.getElementById('click');
+	
+	//after getting the refrence we can associate events to it.
+	//There are many ways to associate events to elements. But the best way is to us 
+	//standard javascript API "addEventlistner". This function get name of the event being associated
+	//as the first argument, function being called as second argument, and third argument is hi-fi stuff for you 
+	//guys so you don't have to worry about it Just use false. It has something to do with bubbling up the events.
+	//So now we are listening to the events
+	demoDiv.addEventListener("mousemove",onMouseMove,false);
+	demoDiv.addEventListener("click",onClick,false);
+	demoDiv.addEventListener("mouseup",onMouseUp,false);
+	demoDiv.addEventListener("mousedown",onMouseDown,false);
+	
+	var color = 0xfff;
+	//this function called on moving the mouse on the colored div
+	//this changes the background color
+	//and also report the mouse absolute position from the top left of the windows.
+	function onMouseMove(e){
+		//the argument e that is received by the function contains a lot of info about the event
+		//i recommend using web developers tools like "FireBug" for mozilla or developer console for chrome or opera and select console
+		//you can see the message mouse move in the console
+		console.log('Mouse Moved');
+		//you can also insert a breakpoint and inspect the value of e
+		//e is a object with properties like clientX,Y
+		posDiv.innerHTML = "Mouse Moved at X:"+e.clientX+" Y:"+e.clientY; 
+		color--;
+		if(color<=0x100) color = 0xfff;	
+		//backgroud color is changing with each click
+		demoDiv.style.backgroundColor = '#'+color.toString(16);
+		
+	}
+	//here we are listening for mouse clicks
+	function onClick(e){
+		console.log('Mouse Clicked');
+		demoDiv.style.background.color = 'blue';
+		posDiv.innerHTML = "Mouse Clicked at X:"+e.clientX+" Y:"+e.clientY; 
+		
+		//a small div with black color is placed at the click position
+		clickDiv.style.display = 'block';
+		clickDiv.style.position = 'absolute';
+		clickDiv.style.left = e.clientX+'px';
+		clickDiv.style.top = e.clientY+'px';
+	}
+	
+	//Mouse up event
+	//check web console
+	function onMouseUp(e){
+	 console.log("MouseUp");
+	}
+	//Mouse Down event
+	//check web console
+	function onMouseDown(e){
+	 console.log("MouseDown");
+	}
+</script>
+</body>
+</html>
